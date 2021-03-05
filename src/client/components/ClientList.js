@@ -6,6 +6,9 @@ import ClientItem from './ClientItem';
 import './ClientList.css';
 
 const ClientList = props => {
+    
+    
+
     if (props.items.lengt === 0) {
         return <div className="place-list center">
             <Card>
@@ -19,10 +22,10 @@ const ClientList = props => {
         <ul className="place-list">
             {props.items.map(client => {
                 return <ClientItem 
-                        key= {client.id}
-                        id={client.id}
-                        name={client.name}
-                        cnp={client.cnp}
+                        key= {client._id}
+                        id={client._id}
+                        subsemnatul={client.subsemnatul}
+                        cnp_nif={client.cnp_nif}
                     />
             })}
         </ul>
