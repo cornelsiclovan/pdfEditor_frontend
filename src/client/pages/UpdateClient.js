@@ -618,7 +618,7 @@ const UpdateClient = () => {
                     label="eliberat de"
                     validators={[VALIDATOR_REQUIRE]}
                     errorText="Va rugam introduceti un ipj valid"
-                    initialValue={loadedClient.eliberat_data}
+                    initialValue={loadedClient.eliberat}
                     onInput={inputHandler}
                 />
                 <Input
