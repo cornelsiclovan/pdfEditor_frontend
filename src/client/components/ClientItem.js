@@ -93,6 +93,9 @@ const ClientItem = props => {
             </Modal>
             <li className="place-item">
                 <Card className="place-item__content">
+                    <div className="place-item__image">
+                        <img src={`http://localhost:5000/${props.image}`} alt="buletin" />
+                    </div>
                     <div className="place-item__info">
                         <h2>{props.subsemnatul}</h2>
                         <h2>{props.cnp_nif}</h2>

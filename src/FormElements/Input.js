@@ -4,6 +4,8 @@ import { validate } from '../util/validators';
 import './Input.css';
 
 const inputReducer = (state, action) => {
+
+    console.log(action.validators);
     switch (action.type) {
         case 'CHANGE':
             return {
@@ -22,6 +24,7 @@ const inputReducer = (state, action) => {
 };
 
 const Input = (props) => {
+    console.log(props.initialValue);
     const [inputState, dispatch] = useReducer(inputReducer, {
         value: props.initialValue || '',
         isTouched: false,

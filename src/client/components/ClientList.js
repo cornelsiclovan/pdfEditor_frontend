@@ -26,6 +26,7 @@ const ClientList = props => {
                         id={client._id}
                         subsemnatul={client.subsemnatul}
                         cnp_nif={client.cnp_nif}
+                        image={client.image}
                     />
             })}
         </ul>
