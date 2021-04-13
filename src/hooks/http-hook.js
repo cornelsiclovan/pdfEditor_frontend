@@ -12,7 +12,7 @@ export const useHttpClient = () => {
         activeHttpRequests.current.push(httpAbortCtrl);
 
         console.log("sendRequest", body);
-
+    
         try {
             const response = await fetch(url, {
                 method,

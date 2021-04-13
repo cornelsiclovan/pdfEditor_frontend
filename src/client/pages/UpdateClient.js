@@ -2,6 +2,7 @@ import { logDOM } from '@testing-library/react';
 import React, {useEffect, useState, useContext} from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '../../FormElements/Button';
+import ImageUpload from '../../FormElements/ImageUpload';
 import Input from '../../FormElements/Input';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
@@ -193,9 +194,9 @@ const UpdateClient = () => {
         const fetchClient = async () => {
             try {
                 const responseData = await sendRequest(`http://localhost:5000/api/clients/${clientId}`);
+            
                 setLoadedClient(responseData.client);
-
-                console.log(responseData.client.subsemnatul);
+                
                 setFormData(
                     {
                         tribunalul : {
@@ -365,7 +366,7 @@ const UpdateClient = () => {
                         data: {
                             value: responseData.client.data,
                             isValid: true
-                        }
+                        },
                     },
                     true
                 );
@@ -430,6 +431,64 @@ const UpdateClient = () => {
                                   'Content-Type': 'application/json'
                               }
             );
+
+        //     const formData = new FormData();
+        //     formData.append('tribunalul', formState.inputs.tribunalul.value);
+        //     formData.append('subsemnatul', formState.inputs.subsemnatul.value);
+        //     formData.append('domiciliat', formState.inputs.domiciliat.value);
+        //     formData.append('strada', formState.inputs.strada.value);
+        //     formData.append('numar', formState.inputs.numar.value);
+        //     formData.append('bloc', formState.inputs.bloc.value);
+        //     formData.append('scara', formState.inputs.scara.value);
+        //     formData.append('etaj', formState.inputs.etaj.value);
+        //     formData.append('apartament', formState.inputs.apartament.value);
+
+        //     formData.append('judet', formState.inputs.judet.value);
+        //     formData.append('telefon', formState.inputs.telefon.value);
+        //     formData.append('act_ident', formState.inputs.act_ident.value);
+        //     formData.append('act_ident_numar', formState.inputs.act_ident_numar.value);
+        //     formData.append('act_ident_seria', formState.inputs.act_ident_seria.value);
+        //     formData.append('cnp_nif', formState.inputs.cnp_nif.value);
+        //     formData.append('eliberat', formState.inputs.eliberat.value);
+        //     formData.append('eliberat_data', formState.inputs.eliberat_data.value);
+        //     formData.append('calitate', formState.inputs.calitate.value);
+
+        //     formData.append('firma', formState.inputs.firma.value);
+        //     formData.append('nr_ordine_rc', formState.inputs.nr_ordine_rc.value);
+        //     formData.append('cui', formState.inputs.cui.value);
+        //     formData.append('sediu_domiciliat', formState.inputs.sediu_domiciliat.value);
+        //     formData.append('sediu_strada', formState.inputs.sediu_strada.value);
+        //     formData.append('sediu_numar', formState.inputs.sediu_numar.value);
+        //     formData.append('sediu_bloc', formState.inputs.sediu_bloc.value);
+        //     formData.append('sediu_scara', formState.inputs.sediu_scara.value);
+
+        //     formData.append('sediu_etaj', formState.inputs.sediu_etaj.value);
+        //     formData.append('sediu_apartament', formState.inputs.sediu_apartament.value);
+        //     formData.append('sediu_judet', formState.inputs.sediu_judet.value);
+        //     formData.append('sediu_cod', formState.inputs.sediu_cod.value);
+        //     formData.append('sediu_cod_post', formState.inputs.sediu_cod_post.value);
+        //     formData.append('sediu_telefon', formState.inputs.sediu_telefon.value);
+        //     formData.append('sediu_telefon1', formState.inputs.sediu_telefon1.value);
+        //     formData.append('sediu_fax', formState.inputs.sediu_fax.value);
+
+        //     formData.append('sediu_fax1', formState.inputs.sediu_fax1.value);
+        //     formData.append('sediu_mail', formState.inputs.sediu_mail.value);
+        //     formData.append('sediu_web', formState.inputs.sediu_web.value);
+        //     formData.append('declar_0', formState.inputs.declar_0.value);
+        //     formData.append('declar_1', formState.inputs.declar_1.value);
+        //     formData.append('declar_2', formState.inputs.declar_2.value);
+        //     formData.append('declar_3', formState.inputs.declar_3.value);
+        //     formData.append('data', formState.inputs.data.value);
+
+
+        //    console.log("update formdata", formData)
+            
+        //     await sendRequest(
+        //         `http://localhost:5000/api/clients/${clientId}`,
+        //         'PATCH',
+        //         formData
+        //     );
+
             history.push('/');
         } catch(err) {}
     }
@@ -883,6 +942,7 @@ const UpdateClient = () => {
                     onInput={inputHandler}
                     initialValue={loadedClient.data}
                 />
+
                 <Button type="submit" disabled={!formState.isValid}>MODIFICA</Button>
                 </form>
             }

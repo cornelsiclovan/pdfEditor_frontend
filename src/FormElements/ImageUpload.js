@@ -1,25 +1,43 @@
 import React, { useRef, useState, useEffect } from 'react';
-
 import './ImageUpload.css';
 import Button from './Button';
+import { useHttpClient } from '../hooks/http-hook';
 
-const ImageUpload = props => {
+
+
+const ImageUpload =  props => {
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [file, setFile] = useState();
-    const [previewUrl, setPreviewUrl] = useState();
+    const [previewUrl, setPreviewUrl] = useState(props.previewUrl);
     const [isValid, setIsValid] = useState(false);
 
     const filePickerRef = useRef();
 
+    
+
     useEffect(() => {
+        let myFile = new File(["foo"], props.previewUrl, {
+            type: "image/jpeg"
+        });
+        console.log("myfile", myFile);
+
         if (!file) {
+            loadedHandler(myFile);
             return;
-        }
+        }   
+
         const fileReader = new FileReader();
         fileReader.onload = () => {
             setPreviewUrl(fileReader.result);
         };
+
         fileReader.readAsDataURL(file);
-    }, [file]);
+    }, [file, props.previewUrl]);
+
+    const loadedHandler = (myFile) => {
+        const responseData = sendRequest(`${props.previewUrl}`);
+        props.onInput(props.id, myFile, true);
+    }
 
     const pickedHandler = (event) => {
         let pickedFile;
@@ -28,6 +46,7 @@ const ImageUpload = props => {
 
         if (event.target.files && event.target.files.length === 1) {
             pickedFile = event.target.files[0];
+            console.log(pickedFile);
             setFile(pickedFile);
             setIsValid(true);
             fileIsValid = true;
@@ -35,7 +54,7 @@ const ImageUpload = props => {
             setIsValid(false);
             fileIsValid = false;
         }
-        console.log(pickedFile);
+        console.log("pickedFile", pickedFile);
 
         props.onInput(props.id, pickedFile, fileIsValid);
     };
