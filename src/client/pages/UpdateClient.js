@@ -367,6 +367,18 @@ const UpdateClient = () => {
                             value: responseData.client.data,
                             isValid: true
                         },
+                        nascutData: {
+                            value: responseData.client.nascutData,
+                            isValid: true
+                        },
+                        nascutInOras: {
+                            value: responseData.client.nascutInOras,
+                            isValid: true
+                        },
+                        nascutJudet: {
+                            value: responseData.client.Judet,
+                            isValid: true
+                        }
                     },
                     true
                 );
@@ -388,6 +400,11 @@ const UpdateClient = () => {
                                 "tribunalul": formState.inputs.tribunalul.value,
                                 "subsemnatul": formState.inputs.subsemnatul.value,
                                 "domiciliat": formState.inputs.domiciliat.value,
+
+                                "nascutData": formState.inputs.nascutData.value,
+                                "nascutInOras": formState.inputs.nascutInOras.value,
+                                "nascutJudet": formState.inputs.nascutJudet.value,
+
                                 "strada": formState.inputs.strada.value,
                                 "numar": formState.inputs.numar.value,
                                 "bloc": formState.inputs.bloc.value,
@@ -537,6 +554,36 @@ const UpdateClient = () => {
                     validators={[VALIDATOR_REQUIRE]}
                     errorText="Va rugam introduceti un nume valid"
                     initialValue={loadedClient.subsemnatul}
+                    onInput={inputHandler}
+                />
+                 <Input 
+                    id="nascutData"
+                    element="input"
+                    type="text"
+                    label="Nascut la data de"
+                    validators={[]}
+                    errorText="Va rugam introduceti un domiciliu valid"
+                    initialValue={loadedClient.nascutData}
+                    onInput={inputHandler}
+                />
+                 <Input 
+                    id="nascutInOras"
+                    element="input"
+                    type="text"
+                    label="Nascut in orasul"
+                    validators={[]}
+                    errorText="Va rugam introduceti un domiciliu valid"
+                    initialValue={loadedClient.nascutInOras}
+                    onInput={inputHandler}
+                />
+                 <Input 
+                    id="nascutJudet"
+                    element="input"
+                    type="text"
+                    label="Nascut in judetul"
+                    validators={[]}
+                    errorText="Va rugam introduceti un domiciliu valid"
+                    initialValue={loadedClient.nascutJudet}
                     onInput={inputHandler}
                 />
                 <Input 
